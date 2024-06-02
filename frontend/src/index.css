@@ -36,3 +36,14 @@
        url('./assets/fonts/WOFF/Lato-Bold.woff') format('woff'); /* Older Browsers */
 }
 
+@layer base {
+  :root {
+    @apply h-dvh bg-backgroundColor dark:bg-slate-900;
+  }
+  h1 {
+    @apply text-primaryColor dark:text-secondaryColor;
+  }
+  p {
+    @apply dark:text-white !important;
+  }
+}
