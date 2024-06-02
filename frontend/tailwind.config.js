@@ -4,18 +4,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        primaryColor: '#004D7F',
-        backgroundColor: '#F5F5F5',
-        secondaryColor: '#00B7B6',
-        accentColor: '#FFD400',
-        white: '#FFFFFF',
+        primaryColor: '#004D7F', // headers buttons important accents
+        backgroundColor: '#F5F5F5', // background color
+        secondaryColor: '#00B7B6', // seondary buttons icons highlight info
+        accentColor: '#FFD400', // use sparingly as an accent
+        white: '#FFFFFF', //text and icons on darker backgrounds
       },
       fontWeight: {
         normal: 400,
         bold: 700,
       },
       fontFamily: {
-        sans: ['Open Sans', 'sans-serif'],
+        sans: ['body', 'sans-serif'],
         heading: ['Montserrat', 'sans-serif'],
         cta: ['Lato', 'sans-serif'],
         latoBold: ['LatoBold', 'sans-serif'],
