@@ -4,11 +4,11 @@ import { Outlet } from 'react-router';
 
 const Layout = () => {
   return (
-    <>
+    <div className="flex flex-col h-dvh">
       <Header />
       <Outlet />
       <Footer />
-    </>
+    </div>
   );
 };
 
