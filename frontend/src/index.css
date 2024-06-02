@@ -12,9 +12,9 @@
 }
 
 @font-face {
-  font-family: 'Open Sans';
+  font-family: 'body';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 400 700;
   font-display: swap;
   src: url('./assets/fonts/WOFF2/OpenSans-Regular.woff2') format('woff2'), /* Modern Browsers */
        url('./assets/fonts/WOFF/OpenSans-Regular.woff') format('woff'); /* Older Browsers */
@@ -36,16 +36,3 @@
        url('./assets/fonts/WOFF/Lato-Bold.woff') format('woff'); /* Older Browsers */
 }
 
-:root {
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
