@@ -12,7 +12,7 @@ const Home = () => {
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam ut excepturi, corporis voluptates atque
             quidem perspiciatis.
           </p>
-          <div className="py-4 mx-auto text-white rounded-md cursor-pointer px-7 my-7 bg-primaryColor/90 hover:bg-primaryColor/80 hover:text-slate-900 ">
+          <div className="py-4 mx-auto text-white rounded-md cursor-pointer px-7 my-7 bg-primaryColor/90 hover:bg-primaryColor/80 hover:text-slate-900 dark:bg-secondaryColor dark:text-slate-900 hover:dark:bg-secondaryColor/80 hover:dark:text-white">
             <button className="text-lg font-lato ">Make life easy</button>
           </div>
           <div className="flex gap-2 mx-auto my-7">
