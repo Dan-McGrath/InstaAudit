@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router';
 import Layout from './components/layout/Layout';
 import ErrorPage from './pages/ErrorPage';
-import Home from './pages/Home';
+import Home from './pages/Home/Home';
 import Login from './auth/Login';
 
 const App = () => {

@@ -1,6 +1,6 @@
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Testimonial from '../components/Testimonial';
+import Testimonial from '../../components/Testimonial';
 
 const Home = () => {
   return (
