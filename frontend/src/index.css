@@ -2,9 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('./assets/fonts/WOFF2/Montserrat-Regular.woff2') format('woff2'), /* Modern Browsers */
+       url('./assets/fonts/WOFF/Montserrat-Regular.woff') format('woff'); /* Older Browsers */
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./assets/fonts/WOFF2/OpenSans-Regular.woff2') format('woff2'), /* Modern Browsers */
+       url('./assets/fonts/WOFF/OpenSans-Regular.woff') format('woff'); /* Older Browsers */
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./assets/fonts/WOFF2/Lato-Regular.woff2') format('woff2'), /* Modern Browsers */
+       url('./assets/fonts/WOFF/Lato-Regular.woff') format('woff'); /* Older Browsers */
+}
+
+@font-face {
+  font-family: 'LatoBold';
+  font-style: normal;
+  font-weight: 700;
+  src: url('./assets/fonts/WOFF2/Lato-Bold.woff2') format('woff2'), /* Modern Browsers */
+       url('./assets/fonts/WOFF/Lato-Bold.woff') format('woff'); /* Older Browsers */
+}
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
