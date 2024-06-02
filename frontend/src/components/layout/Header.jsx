@@ -1,7 +1,12 @@
-import React from 'react';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons/faBars';
 const Header = () => {
-  return <div>Header</div>;
+  return (
+    <header className="flex items-center justify-between py-3 mx-2">
+      <p className="text-xl font-bold font-latoBold">InstaAudit</p>
+      <FontAwesomeIcon icon={faBars} className="text-xl" />
+    </header>
+  );
 };
 
 export default Header;
