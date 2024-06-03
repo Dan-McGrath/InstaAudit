@@ -1,18 +1,12 @@
-import { useEffect } from 'react';
 import Cards from '../../components/Cards';
 import { useHotelData } from '../../store/useHotelData';
 
 const Dashboard = () => {
-  const { fetchHotelData, hotelData } = useHotelData();
-
-  useEffect(() => {
-    fetchHotelData();
-  });
-
+  const { auditData } = useHotelData();
   return (
     <main>
       <div>
-        <Cards data={hotelData} />
+        <Cards data={[]} />
       </div>
     </main>
   );
