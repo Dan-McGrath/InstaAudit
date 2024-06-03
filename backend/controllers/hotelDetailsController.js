@@ -5,13 +5,14 @@ const sampleData = require("../db/hotelDetails");
 // @access Private
 const getDetails = async (req, res) => {
   // TODO: change when real DB is added
+
   const details = sampleData;
 
-  if (!details?.length) {
+  if (!details) {
     return res.status(400).json({ message: "No details found" });
   }
 
-  res.json(users);
+  res.json(details);
 };
 
 module.exports = {
