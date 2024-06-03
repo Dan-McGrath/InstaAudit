@@ -5,9 +5,13 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const corsOptions = require("./config/corsOptions");
+const { logger, logEvents } = require("./middleware/logger");
+const errorHandler = require("./middleware/errorHandler");
 const PORT = process.env.PORT || 3500;
 
 console.log(process.env.NODE_ENV);
+
+app.use(logger);
 
 app.use(cors(corsOptions));
 app.use(express.json());
@@ -32,6 +36,8 @@ app.all("*", (req, res) => {
     res.type("txt").send("404 Not Found");
   }
 });
+
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(
