@@ -3,16 +3,24 @@ import Layout from './components/layout/Layout';
 import ErrorPage from './pages/ErrorPage';
 import Home from './pages/Home/Home';
 import Login from './auth/Login';
+import Dashboard from './pages/Dashboard/Dashboard';
+import { HotelProvider } from './store/useHotelData';
 
 const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Layout />} errorElement={<ErrorPage />}>
-        <Route path="*" element={<ErrorPage />} />
-        <Route index element={<Home />} />
-        <Route path="login" element={<Login />} />
-      </Route>
-    </Routes>
+    <HotelProvider>
+      <Routes>
+        <Route path="/" element={<Layout />} errorElement={<ErrorPage />}>
+          <Route path="*" element={<ErrorPage />} />
+          <Route index element={<Home />} />
+          <Route path="login" element={<Login />} />
+        </Route>
+        <Route path="dashboard" element={<Layout />} errorElement={<ErrorPage />}>
+          <Route path="*" element={<ErrorPage />} />
+          <Route index element={<Dashboard />} />
+        </Route>
+      </Routes>
+    </HotelProvider>
   );
 };
 
