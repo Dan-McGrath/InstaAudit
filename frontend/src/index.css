@@ -46,4 +46,7 @@
   p {
     @apply dark:text-white !important;
   }
+  main {
+    @apply grow;
+  }
 }
