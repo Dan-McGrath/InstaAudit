@@ -12,7 +12,7 @@ export const HotelProvider = ({ children }) => {
 
   // URL
   const fetchURL = 'http://localhost:3500';
-  const hotelDetailEndpoint = '/hotelDetail';
+  const hotelDetailEndpoint = '/hotelDetails';
   const hotelDataEndpoint = '/hotelData';
 
   const getHotelOverviewData = async () => {
