@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
+const path = require("path");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const corsOptions = require("./config/corsOptions");
@@ -11,6 +12,10 @@ console.log(process.env.NODE_ENV);
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
+
+// root routing and css
+app.use("/", express.static(path.join(__dirname, "public")));
+app.use("/", require("./routes/root"));
 
 // catch all route to transfer any unknown routes to 404 page
 app.all("*", (req, res) => {
@@ -25,5 +30,7 @@ app.all("*", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on port: ${PORT}`);
+  console.log(
+    `Click link to go to api: http://localhost:${PORT}\nServer Running on port: ${PORT}`
+  );
 });
