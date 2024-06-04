@@ -4,8 +4,8 @@ const hotelDataController = require("../controllers/hotelDataController");
 
 router
   .route("/")
-  .get(hotelDataController.getAllData)
+  .get(hotelDataController.getDataByDate)
   .post(hotelDataController.submitData);
 
-router.route("/:date").get(hotelDataController.getDataByDate);
+router.route("/all").get(hotelDataController.getAllData);
 module.exports = router;
