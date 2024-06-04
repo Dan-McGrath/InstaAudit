@@ -1,12 +1,9 @@
-const { format } = require("date-fns");
+const { formatISO } = require("date-fns");
 
 const addCreatedDate = (arr) => {
-  const startDate = new Date("January 1, 2024 00:00:00");
+  const startDate = new Date("January 1, 2023 00:00:00");
   for (let i = 0; i < arr.length; i++) {
-    arr[i].createdAt = format(
-      startDate.setDate(startDate.getDate() + 1),
-      "MM/dd/yyyy"
-    );
+    arr[i].createdAt = formatISO(startDate.setDate(startDate.getDate() + 1));
   }
   return arr;
 };
