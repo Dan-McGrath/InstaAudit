@@ -14,7 +14,7 @@ const getAllData = async (req, res) => {
     return res.status(400).json({ message: "No hotel data found" });
   }
 
-  res.status(200).json(users);
+  res.json(users);
 };
 
 // @desc Get specific user
