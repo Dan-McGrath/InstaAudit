@@ -1,13 +1,8 @@
 import Card from './Card';
 
 const Cards = ({ data }) => {
-  return (
-    <>
-      {data.map((ele) => (
-        <Card key={ele.createdAt} data={ele} />
-      ))}
-    </>
-  );
+  console.log(data);
+  return <Card data={data} />;
 };
 
 export default Cards;
