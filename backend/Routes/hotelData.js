@@ -7,4 +7,5 @@ router
   .get(hotelDataController.getAllData)
   .post(hotelDataController.submitData);
 
+router.route("/:date").get(hotelDataController.getDataByDate);
 module.exports = router;
