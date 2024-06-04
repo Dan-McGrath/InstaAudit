@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo, useState, useEffect } from 'react';
+import { createContext, useContext, useMemo, useState, useEffect, useCallback } from 'react';
 
 const HotelContext = createContext({});
 
@@ -16,17 +16,25 @@ export const HotelProvider = ({ children }) => {
   const hotelDetailEndpoint = '/hotelDetails';
   const hotelDataEndpoint = '/hotelData';
 
-  const getOverviewByDate = async (date = auditDate) => {
-    const response = await fetch(`${fetchURL}${hotelDataEndpoint}/overview/${date}`, {
-      method: 'GET',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    const data = await response.json();
-    setHotelOverviewData(data);
-  };
+  const getOverviewByDate = useCallback(
+    async (date = auditDate) => {
+      console.log(date);
+      const response = await fetch(`${fetchURL}${hotelDataEndpoint}?date=${date}`, {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const data = await response.json();
+      setHotelOverviewData(data);
+    },
+    [auditDate],
+  );
+
+  useEffect(() => {
+    getOverviewByDate(auditDate.toISOString());
+  }, [getOverviewByDate, auditDate]);
 
   const submitData = async (data) => {
     const response = await fetch(fetchURL + hotelDataEndpoint, {
@@ -43,6 +51,7 @@ export const HotelProvider = ({ children }) => {
     setAuditData(submittedData);
   };
 
+  // TODO: Find a way to differ this so it dosn't cause issues with other info sent
   const fetchHotelData = async () => {
     const response = await fetch(fetchURL + hotelDataEndpoint, {
       method: 'GET',
