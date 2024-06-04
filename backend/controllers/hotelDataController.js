@@ -1,4 +1,11 @@
 const sampleData = require("../db/data");
+const hotelDetails = require("../db/hotelDetails");
+const {
+  getAdr,
+  getRevPar,
+  getOccupied,
+  getOverviewData,
+} = require("../utils/helpers");
 
 // @desc Get all hotel data
 // @route GET /hotelData
@@ -116,8 +123,9 @@ const submitData = async (req, res) => {
     });
   }
 
-  // TODO: Change to add to DB when added
-  const auditData = {
+  // TODO: Save to DB when added
+  // TODO: Use data receieved to make new properties (i.e. Occupancy, revPar, adr)
+  let auditData = {
     groupData,
     compRoomInfo,
     outOfOrderRooms,
@@ -128,12 +136,31 @@ const submitData = async (req, res) => {
     updatedAt,
   };
 
+  auditData = getOverviewData(auditData, hotelDetails.totalRooms);
+
   sampleData.push(auditData);
 
-  res.status(201).json({ message: `Info for ${auditDate} created` });
+  res
+    .status(201)
+    .json({ message: `Info for ${auditDate} created`, data: auditData });
+};
+
+const getDataByDate = async (req, res) => {
+  const { date } = req.query.params;
+  // TODO: search data by date with DB when available
+  let data;
+  sampleData.forEach((obj) => {
+    if (obj.createdAt === date) {
+      data = obj;
+    } else {
+      return res.status(400).json({ message: "Could not find date" });
+    }
+  });
+  return res.json(data);
 };
 
 module.exports = {
   getAllData,
   submitData,
+  getDataByDate,
 };
