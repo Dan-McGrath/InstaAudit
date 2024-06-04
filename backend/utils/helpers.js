@@ -1,15 +1,27 @@
 const getAdr = (roomsOccupied, roomRevenue) => {
-  const convertedString = Number(roomRevenue.replace(/[^0-9.-]+/g, ""));
-  return Math.round((convertedString / roomsOccupied) * 100) / 100;
+  if (typeof roomRevenue === "string") {
+    const convertedString = Number(roomRevenue.replace(/[^0-9.-]+/g, ""));
+    return Math.round((convertedString / roomsOccupied) * 100) / 100;
+  } else {
+    return Math.round((roomRevenue / roomsOccupied) * 100) / 100;
+  }
 };
 
 const getRevPar = (roomsAvailable, roomRevenue) => {
-  const convertedString = Number(roomRevenue.replace(/[^0-9.-]+/g, ""));
-  return Math.round((convertedString / roomsAvailable) * 100) / 100;
+  if (typeof roomRevenue === "string") {
+    const convertedString = Number(roomRevenue.replace(/[^0-9.-]+/g, ""));
+    return Math.round((convertedString / roomsAvailable) * 100) / 100;
+  } else {
+    return Math.round((roomRevenue / roomsAvailable) * 100) / 100;
+  }
 };
 
 const getOccupied = (roomsAvailable, roomsSold) => {
   return Math.round(roomsAvailable / roomsSold) / 10;
+};
+
+const removetime = (date) => {
+  return new Date(date.getFullYear(), date.getMonth(), date.getDate());
 };
 
 const getOverviewData = (data, totalRooms) => {
@@ -17,7 +29,6 @@ const getOverviewData = (data, totalRooms) => {
 
   // get current year and current month
   const currentYear = new Date(new Date().getFullYear(), 0, 1);
-  console.log(currentYear);
 
   // new object properties
   let groupRevPar;
@@ -41,10 +52,10 @@ const getOverviewData = (data, totalRooms) => {
     revenueData.total - revenueData.group - revenueData.contract;
   const transientRooms = occupiedRooms - contractRooms - groupRooms;
 
-  totalRevPar = getRevPar(availableRooms, revenueData.total);
-  groupRevPar = getRevPar(availableRooms, revenueData.group);
-  contractRevPar = getRevPar(availableRooms, revenueData.contract);
-  transientRevPar = getRevPar(availableRooms, transientRevenue);
+  totalRevPar = getRevPar(availableRoomsWithComps, revenueData.total);
+  groupRevPar = getRevPar(availableRoomsWithComps, revenueData.group);
+  contractRevPar = getRevPar(availableRoomsWithComps, revenueData.contract);
+  transientRevPar = getRevPar(availableRoomsWithComps, transientRevenue);
   totalAdr = getAdr(occupiedRooms, revenueData.total);
   groupAdr = getAdr(groupRooms, revenueData.group);
   contractAdr = getAdr(contractRooms, revenueData.contract);
@@ -75,4 +86,5 @@ module.exports = {
   getRevPar,
   getOccupied,
   getOverviewData,
+  removetime,
 };
