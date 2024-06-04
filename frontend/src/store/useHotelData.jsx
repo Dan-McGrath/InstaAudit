@@ -7,23 +7,25 @@ export const HotelProvider = ({ children }) => {
   const [auditData, setAuditData] = useState({});
   const [hotelDetails, setHotelDetails] = useState({});
   const [hotelData, setHotelData] = useState([]);
-  const [auditDate, setAuditDate] = useState(Date.now());
+  const [auditDate, setAuditDate] = useState(new Date());
   const [hotelOverviewData, setHotelOverviewData] = useState({});
-
+  const [ytd, setYtd] = useState(new Date(new Date().getFullYear(), 0, 1));
+  const [mtd, setMtd] = useState(new Date(new Date().getFullYear(), new Date().getMonth(), 1));
   // URL
   const fetchURL = 'http://localhost:3500';
   const hotelDetailEndpoint = '/hotelDetails';
   const hotelDataEndpoint = '/hotelData';
 
-  const getHotelOverviewData = async () => {
-    const response = await fetch(fetchURL + hotelDataEndpoint + '/overview', {
+  const getOverviewByDate = async (date = auditDate) => {
+    const response = await fetch(`${fetchURL}${hotelDataEndpoint}/overview/${date}`, {
       method: 'GET',
       mode: 'cors',
       headers: {
         'Content-Type': 'application/json',
       },
     });
-    setHotelOverviewData(response.json());
+    const data = await response.json();
+    setHotelOverviewData(data);
   };
 
   const submitData = async (data) => {
@@ -35,8 +37,10 @@ export const HotelProvider = ({ children }) => {
       },
       body: JSON.stringify(data),
     });
-    setHotelData([...hotelData, response.json()]);
-    setAuditData(response.json());
+
+    const submittedData = await response.json();
+    setHotelData([...hotelData, submittedData]);
+    setAuditData(submittedData);
   };
 
   const fetchHotelData = async () => {
@@ -47,7 +51,8 @@ export const HotelProvider = ({ children }) => {
         'Content-Type': 'application/json',
       },
     });
-    setHotelData(response.json);
+    const data = await response.json();
+    setHotelData(data);
   };
 
   useEffect(() => {
@@ -59,7 +64,8 @@ export const HotelProvider = ({ children }) => {
           'Content-Type': 'application/json',
         },
       });
-      setHotelDetails(response.json());
+      const data = await response.json();
+      setHotelDetails(data);
     };
     fetchHotelDetails();
   }, []);
@@ -71,9 +77,14 @@ export const HotelProvider = ({ children }) => {
       hotelData,
       auditDate,
       hotelOverviewData,
+      ytd,
+      mtd,
       fetchHotelData,
       submitData,
       setAuditDate,
+      getOverviewByDate,
+      setYtd,
+      setMtd,
     }),
     [auditData, hotelDetails, hotelData, auditDate, hotelOverviewData],
   );
