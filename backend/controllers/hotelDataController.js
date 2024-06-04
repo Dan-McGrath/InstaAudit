@@ -1,11 +1,7 @@
+const { parseISO } = require("date-fns");
 const sampleData = require("../db/data");
 const hotelDetails = require("../db/hotelDetails");
-const {
-  getAdr,
-  getRevPar,
-  getOccupied,
-  getOverviewData,
-} = require("../utils/helpers");
+const { removetime, getOverviewData } = require("../utils/helpers");
 
 // @desc Get all hotel data
 // @route GET /hotelData
@@ -18,7 +14,7 @@ const getAllData = async (req, res) => {
     return res.status(400).json({ message: "No hotel data found" });
   }
 
-  res.json(users);
+  res.status(200).json(users);
 };
 
 // @desc Get specific user
@@ -146,17 +142,21 @@ const submitData = async (req, res) => {
 };
 
 const getDataByDate = async (req, res) => {
-  const { date } = req.query.params;
+  const { date } = req.query;
   // TODO: search data by date with DB when available
+  const formattedDate = removetime(parseISO(date));
   let data;
+
   sampleData.forEach((obj) => {
-    if (obj.createdAt === date) {
-      data = obj;
-    } else {
-      return res.status(400).json({ message: "Could not find date" });
+    if (
+      removetime(parseISO(obj.createdAt)).valueOf() === formattedDate.valueOf()
+    ) {
+      data = getOverviewData(obj, hotelDetails.totalRooms);
     }
   });
-  return res.json(data);
+  return data
+    ? res.json(data)
+    : res.status(400).json({ message: "Could not find date" });
 };
 
 module.exports = {
