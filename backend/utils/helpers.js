@@ -17,7 +17,7 @@ const getRevPar = (roomsAvailable, roomRevenue) => {
 };
 
 const getOccupied = (roomsAvailable, roomsSold) => {
-  return Math.round(roomsAvailable / roomsSold) / 10;
+  return (roomsSold / roomsAvailable).toFixed(4) * 100;
 };
 
 const removetime = (date) => {
@@ -41,11 +41,11 @@ const getOverviewData = (data, totalRooms) => {
   let transientRevPar;
   let occupancy;
 
-  const occupiedRooms = roomData.total;
-  const contractRooms = roomData.contract;
-  const groupRooms = roomData.groupRooms;
-  const outOfOrderRooms = roomData.outOfOrder;
-  const compRooms = roomData.compRooms;
+  const occupiedRooms = roomData.total || 0;
+  const contractRooms = roomData.contract || 0;
+  const groupRooms = roomData.groupRooms || 0;
+  const outOfOrderRooms = roomData.outOfOrder || 0;
+  const compRooms = roomData.compRooms || 0;
 
   const availableRoomsWithComps = totalRooms - outOfOrderRooms;
   const transientRevenue =
