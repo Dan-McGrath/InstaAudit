@@ -4,7 +4,7 @@ import Testimonial from '../../components/Testimonial';
 
 const Home = () => {
   return (
-    <main className="flex flex-col justify-evenly">
+    <main className="flex flex-col mt-12 justify-evenly">
       <div className="mx-1">
         <div className="flex flex-col text-center text-pretty">
           <h1 className="text-5xl font-bold leading-[3rem] font-heading">Make data entry easier and safe.</h1>
