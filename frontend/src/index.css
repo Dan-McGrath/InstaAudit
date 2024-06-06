@@ -47,6 +47,6 @@
     @apply dark:text-white !important;
   }
   main {
-    @apply grow;
+    @apply mt-12 grow;
   }
 }
