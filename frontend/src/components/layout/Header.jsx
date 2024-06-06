@@ -3,7 +3,9 @@ import { faBars } from '@fortawesome/free-solid-svg-icons/faBars';
 const Header = () => {
   return (
     <header className="flex items-center justify-between py-3 mx-2">
-      <p className="text-xl font-bold font-latoBold">InstaAudit</p>
+      <p className="text-xl font-bold font-latoBold">
+        Insta<span className="text-primaryColor">Audit</span>
+      </p>
       <FontAwesomeIcon icon={faBars} className="text-xl dark:text-white" />
     </header>
   );
