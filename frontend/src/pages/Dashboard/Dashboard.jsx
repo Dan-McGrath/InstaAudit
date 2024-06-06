@@ -1,14 +1,13 @@
-import Cards from '../../components/Cards';
-import { useHotelData } from '../../store/useHotelData';
+import MultiChartContainer from '../../components/charts/MultiChartContainer';
+import OverviewTiles from './OverviewTiles';
 
 const Dashboard = () => {
-  const { hotelOverviewData } = useHotelData();
-
   return (
     <main>
       <div>
-        <Cards data={hotelOverviewData} />
+        <OverviewTiles />
       </div>
+      <MultiChartContainer />
     </main>
   );
 };
