@@ -7,6 +7,7 @@ const ToggleCards = ({ hotelOverviewData, handleClick, text }) => {
   const arrayOfValues = Object.values(hotelOverviewData);
   return (
     <>
+      <hr className="w-11/12 h-[0.2rem] mx-auto bg-black rounded-xl" />
       <div className="flex flex-col gap-1">
         <Card data={formatToDollars(arrayOfValues[3])} text={`Transient ${text}`} />
         <Card data={formatToDollars(arrayOfValues[1])} text={`Group ${text}`} />
