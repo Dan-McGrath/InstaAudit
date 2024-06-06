@@ -18,7 +18,6 @@ export const HotelProvider = ({ children }) => {
 
   const getOverviewByDate = useCallback(
     async (date = auditDate) => {
-      console.log(date);
       const response = await fetch(`${fetchURL}${hotelDataEndpoint}?date=${date}`, {
         method: 'GET',
         mode: 'cors',
