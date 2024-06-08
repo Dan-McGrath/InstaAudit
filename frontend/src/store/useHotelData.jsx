@@ -7,7 +7,7 @@ export const HotelProvider = ({ children }) => {
   const [auditData, setAuditData] = useState({});
   const [hotelDetails, setHotelDetails] = useState({});
   const [hotelData, setHotelData] = useState([]);
-  const [auditDate, setAuditDate] = useState(new Date());
+  const [businessDate, setBusinessDate] = useState(new Date());
   const [hotelOverviewData, setHotelOverviewData] = useState({});
   const [ytd, setYtd] = useState(new Date(new Date().getFullYear(), 0, 1));
   const [mtd, setMtd] = useState(new Date(new Date().getFullYear(), new Date().getMonth(), 1));
@@ -17,7 +17,7 @@ export const HotelProvider = ({ children }) => {
   const hotelDataEndpoint = '/hotelData';
 
   const getOverviewByDate = useCallback(
-    async (date = auditDate) => {
+    async (date = businessDate) => {
       const response = await fetch(`${fetchURL}${hotelDataEndpoint}?date=${date}`, {
         method: 'GET',
         mode: 'cors',
@@ -28,12 +28,12 @@ export const HotelProvider = ({ children }) => {
       const data = await response.json();
       setHotelOverviewData(data);
     },
-    [auditDate],
+    [businessDate],
   );
 
   useEffect(() => {
-    getOverviewByDate(auditDate.toISOString());
-  }, [getOverviewByDate, auditDate]);
+    getOverviewByDate(businessDate.toISOString());
+  }, [getOverviewByDate, businessDate]);
 
   const submitData = async (data) => {
     const response = await fetch(fetchURL + hotelDataEndpoint, {
@@ -83,18 +83,18 @@ export const HotelProvider = ({ children }) => {
       auditData,
       hotelDetails,
       hotelData,
-      auditDate,
+      businessDate,
       hotelOverviewData,
       ytd,
       mtd,
       fetchHotelData,
       submitData,
-      setAuditDate,
+      setBusinessDate,
       getOverviewByDate,
       setYtd,
       setMtd,
     }),
-    [auditData, hotelDetails, hotelData, auditDate, hotelOverviewData],
+    [auditData, hotelDetails, hotelData, businessDate, hotelOverviewData],
   );
 
   return <HotelContext.Provider value={value}>{children}</HotelContext.Provider>;
