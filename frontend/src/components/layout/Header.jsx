@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <header className="flex items-center justify-between py-3 mx-2">
       <p className="text-xl font-bold font-latoBold">
-        Insta<span className="text-primaryColor">Audit</span>
+        Insta<span className="text-primaryColor dark:text-secondaryColor">Audit</span>
       </p>
       <FontAwesomeIcon icon={faBars} className="text-xl dark:text-white" />
     </header>
