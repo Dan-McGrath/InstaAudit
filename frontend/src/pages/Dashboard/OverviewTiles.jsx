@@ -22,7 +22,7 @@ const OverviewTiles = () => {
   return (
     <>
       {Object.keys(hotelOverviewData).length !== 0 && (
-        <div className="grid mx-2">
+        <div className="grid gap-3 mx-2">
           <div className="flex flex-col gap-2 px-5 py-3 border rounded-md shadow-lg justify-evenly">
             <div>
               <Card data={formatToDollars(hotelOverviewData.adr.totalAdr)} text="ADR" />
@@ -32,7 +32,7 @@ const OverviewTiles = () => {
             ) : (
               <button onClick={handleToggleMoreInfoAdr} className="flex items-center justify-center gap-1 my-1">
                 <p className="text-sm">More info</p>
-                <FontAwesomeIcon icon={faChevronDown} className="text-sm" />
+                <FontAwesomeIcon icon={faChevronDown} className="text-sm dark:text-white" />
               </button>
             )}
           </div>
@@ -49,7 +49,7 @@ const OverviewTiles = () => {
             ) : (
               <button onClick={handleToggleMoreInfoRevPar} className="flex items-center justify-center gap-2 my-1">
                 <p className="text-sm">More info</p>
-                <FontAwesomeIcon icon={faChevronDown} className="text-sm" />
+                <FontAwesomeIcon icon={faChevronDown} className="text-sm dark:text-white" />
               </button>
             )}
           </div>
