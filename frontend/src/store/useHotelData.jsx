@@ -35,19 +35,25 @@ export const HotelProvider = ({ children }) => {
     getOverviewByDate(businessDate.toISOString());
   }, [getOverviewByDate, businessDate]);
 
-  const submitData = async (data) => {
+  const submitData = async (e) => {
+    e.preventDefault();
     const response = await fetch(fetchURL + hotelDataEndpoint, {
       method: 'POST',
       mode: 'cors',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(auditData),
     });
 
     const submittedData = await response.json();
     setHotelData([...hotelData, submittedData]);
-    setAuditData(submittedData);
+  };
+
+  const handleChange = (e, setter) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setter((data) => ({ ...data, [name]: value }));
   };
 
   // TODO: Find a way to differ this so it dosn't cause issues with other info sent
@@ -89,6 +95,7 @@ export const HotelProvider = ({ children }) => {
       mtd,
       fetchHotelData,
       submitData,
+      handleChange,
       setBusinessDate,
       getOverviewByDate,
       setYtd,
