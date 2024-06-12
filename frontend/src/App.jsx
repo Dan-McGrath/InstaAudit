@@ -6,7 +6,7 @@ import Login from './auth/Login';
 import Dashboard from './pages/Dashboard/Dashboard';
 import { HotelProvider } from './store/useHotelData';
 import Audit from './pages/Audit/Audit';
-import AuditForm from './pages/Audit/AuditForm';
+import AuditForm from './pages/Audit/AuditForm/AuditForm';
 import AuditOverview from './pages/Audit/AuditOverview';
 
 const App = () => {
