@@ -7,8 +7,8 @@
   font-style: normal;
   font-weight: 400 700;
   font-display: swap;
-  src: url('./assets/fonts/WOFF2/Montserrat-Regular.woff2') format('woff2'), /* Modern Browsers */
-       url('./assets/fonts/WOFF/Montserrat-Regular.woff') format('woff'); /* Older Browsers */
+  src: url('./assets/fonts/WOFF2/Montserrat-Regular.woff2') format('woff2'),
+    /* Modern Browsers */ url('./assets/fonts/WOFF/Montserrat-Regular.woff') format('woff'); /* Older Browsers */
 }
 
 @font-face {
@@ -16,36 +16,51 @@
   font-style: normal;
   font-weight: 400 700;
   font-display: swap;
-  src: url('./assets/fonts/WOFF2/OpenSans-Regular.woff2') format('woff2'), /* Modern Browsers */
-       url('./assets/fonts/WOFF/OpenSans-Regular.woff') format('woff'); /* Older Browsers */
+  src: url('./assets/fonts/WOFF2/OpenSans-Regular.woff2') format('woff2'),
+    /* Modern Browsers */ url('./assets/fonts/WOFF/OpenSans-Regular.woff') format('woff'); /* Older Browsers */
 }
 
 @font-face {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 400;
-  src: url('./assets/fonts/WOFF2/Lato-Regular.woff2') format('woff2'), /* Modern Browsers */
-       url('./assets/fonts/WOFF/Lato-Regular.woff') format('woff'); /* Older Browsers */
+  src: url('./assets/fonts/WOFF2/Lato-Regular.woff2') format('woff2'),
+    /* Modern Browsers */ url('./assets/fonts/WOFF/Lato-Regular.woff') format('woff'); /* Older Browsers */
 }
 
 @font-face {
   font-family: 'LatoBold';
   font-style: normal;
   font-weight: 700;
-  src: url('./assets/fonts/WOFF2/Lato-Bold.woff2') format('woff2'), /* Modern Browsers */
-       url('./assets/fonts/WOFF/Lato-Bold.woff') format('woff'); /* Older Browsers */
+  src: url('./assets/fonts/WOFF2/Lato-Bold.woff2') format('woff2'),
+    /* Modern Browsers */ url('./assets/fonts/WOFF/Lato-Bold.woff') format('woff'); /* Older Browsers */
 }
 
 @layer base {
   :root {
     @apply h-dvh bg-backgroundColor dark:bg-slate-900;
   }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+
+  p {
+    @apply font-sans;
+  }
+
   h1 {
     @apply text-primaryColor dark:text-secondaryColor;
   }
+
   p {
     @apply dark:text-white !important;
   }
+
   main {
     @apply grow;
   }
