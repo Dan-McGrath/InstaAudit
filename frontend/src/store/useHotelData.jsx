@@ -50,12 +50,6 @@ export const HotelProvider = ({ children }) => {
     setHotelData([...hotelData, submittedData]);
   };
 
-  const handleChange = (e, setter) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setter((data) => ({ ...data, [name]: value }));
-  };
-
   // TODO: Find a way to differ this so it dosn't cause issues with other info sent
   const fetchHotelData = async () => {
     const response = await fetch(fetchURL + hotelDataEndpoint, {
@@ -95,7 +89,6 @@ export const HotelProvider = ({ children }) => {
       mtd,
       fetchHotelData,
       submitData,
-      handleChange,
       setBusinessDate,
       getOverviewByDate,
       setYtd,
