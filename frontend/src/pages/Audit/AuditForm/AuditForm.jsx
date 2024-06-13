@@ -15,8 +15,11 @@ const AuditForm = () => {
     e.preventDefault();
   };
 
+  let navBar;
+  let formComponent = <RevenueDataForm />;
+
   if (currentForm === formLinks[0]) {
-    return (
+    navBar = (
       <>
         <h2 className="text-2xl font-bold text-center text-primaryColor">Audit Data</h2>
         <nav>
@@ -35,15 +38,11 @@ const AuditForm = () => {
             </li>
           </ul>
         </nav>
-
-        <form onSubmit={handleSubmit}>
-          <button type="submit">Submit</button>
-          <RevenueDataForm />
-        </form>
       </>
     );
+    formComponent = <RevenueDataForm />;
   } else if (currentForm === formLinks[1]) {
-    return (
+    navBar = (
       <>
         <h2 className="text-2xl font-bold text-center text-primaryColor">Audit Data</h2>
         <nav>
@@ -62,14 +61,11 @@ const AuditForm = () => {
             </li>
           </ul>
         </nav>
-        <form onSubmit={handleSubmit}>
-          <button type="submit">Submit</button>
-          <RoomDataForm />
-        </form>
       </>
     );
+    formComponent = <RoomDataForm />;
   } else if (currentForm === formLinks[2]) {
-    return (
+    navBar = (
       <>
         <h2 className="text-2xl font-bold text-center text-primaryColor">Audit Data</h2>
         <nav>
@@ -88,56 +84,20 @@ const AuditForm = () => {
             </li>
           </ul>
         </nav>
-        <form onSubmit={handleSubmit}>
-          <button type="submit">Submit</button>
-          <RoomInfoForm />
-        </form>
       </>
     );
+    formComponent = <RoomInfoForm />;
   }
+
+  return (
+    <>
+      {navBar}
+      <form onSubmit={handleSubmit}>
+        <button type="submit">Submit</button>
+        {formComponent}
+      </form>
+    </>
+  );
 };
 
 export default AuditForm;
-
-//<form onSubmit={(e) => sumbitData(e)} className="w-3/4 mx-auto ">
-//   <div className="flex justify-end w-full mb-2">
-//     <input
-//       type="submit"
-//       disabled
-//       className="px-2 py-1 rounded-md bg-secondaryColor disabled:bg-gray-500 disabled:text-white"
-//     />
-//   </div>
-//   <fieldset className="flex flex-col items-center gap-4">
-//     <legend className="mb-2 font-semibold text-center text-primaryColor">Revenue</legend>
-//     <label className="" htmlFor="roomRevenue">
-//       Room Revenue
-//     </label>
-//     <input
-//       type="number"
-//       id="roomRevenue"
-//       placeholder="Room Revenue"
-//       value={roomRevenue}
-//       onChange={(e) => setRoomRevenue(Number(e.target.value))}
-//     />
-//     <label className="" htmlFor="groupRevenue">
-//       Group Revenue
-//     </label>
-//     <input
-//       type="number"
-//       id="groupRevenue"
-//       placeholder="Group Revenue"
-//       value={groupRevenue}
-//       onChange={(e) => setGroupRevenue(Number(e.target.value))}
-//     />
-//     <label className="" htmlFor="contractRevenue">
-//       Contract Revenue
-//     </label>
-//     <input
-//       type="number"
-//       id="contractRevenue"
-//       placeholder="Contract Revenue"
-//       value={contractRevenue}
-//       onChange={(e) => setcontractRevenue(Number(e.target.value))}
-//     />
-//   </fieldset>
-// </form>
