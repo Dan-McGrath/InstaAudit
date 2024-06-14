@@ -10,9 +10,21 @@ const AuditForm = () => {
   const formLinks = ['Revenue Totals', 'Room Totals', 'Room Info'];
 
   const [currentForm, setCurrentForm] = useState(formLinks[0]);
+  const [canSubmit, setCanSubmit] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+  };
+
+  const saveAndContinue = () => {
+    const current = formLinks.indexOf(currentForm);
+    if (current === -1) {
+      setCurrentForm(formLinks[0]);
+    } else if (current === formLinks.length - 1) {
+      setCurrentForm(formLinks[0]);
+    } else {
+      setCurrentForm(formLinks[current + 1]);
+    }
   };
 
   let navBar;
@@ -21,7 +33,6 @@ const AuditForm = () => {
   if (currentForm === formLinks[0]) {
     navBar = (
       <>
-        <h2 className="text-2xl font-bold text-center text-primaryColor">Audit Data</h2>
         <nav>
           <ul className="flex items-center justify-center gap-1">
             <li
@@ -44,7 +55,6 @@ const AuditForm = () => {
   } else if (currentForm === formLinks[1]) {
     navBar = (
       <>
-        <h2 className="text-2xl font-bold text-center text-primaryColor">Audit Data</h2>
         <nav>
           <ul className="flex items-center justify-center gap-1">
             <li className="p-2 rounded-md bg-secondaryColor font-cta" onClick={() => setCurrentForm(formLinks[0])}>
@@ -67,7 +77,6 @@ const AuditForm = () => {
   } else if (currentForm === formLinks[2]) {
     navBar = (
       <>
-        <h2 className="text-2xl font-bold text-center text-primaryColor">Audit Data</h2>
         <nav>
           <ul className="flex items-center justify-center gap-1">
             <li className="p-2 rounded-md bg-secondaryColor font-cta" onClick={() => setCurrentForm(formLinks[0])}>
@@ -91,10 +100,25 @@ const AuditForm = () => {
 
   return (
     <>
+      <h2 className="text-2xl font-bold text-center text-primaryColor">Audit Data</h2>
       {navBar}
-      <form onSubmit={handleSubmit}>
-        <button type="submit">Submit</button>
-        {formComponent}
+      <form onSubmit={handleSubmit} className="w-11/12 mx-auto">
+        <div className="flex justify-center w-11/12 mx-auto">
+          {canSubmit ? (
+            <>
+              <button type="submit" className="w-3/4 px-2 py-1 mx-auto my-3 rounded-md bg-accentColor">
+                Submit
+              </button>
+            </>
+          ) : (
+            <>
+              <button type="button" onClick={saveAndContinue} className="px-2 py-1 my-3 rounded-md bg-accentColor">
+                Save and Continue
+              </button>
+            </>
+          )}
+        </div>
+        <div className="my-6">{formComponent}</div>
       </form>
     </>
   );
