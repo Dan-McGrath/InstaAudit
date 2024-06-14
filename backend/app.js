@@ -18,11 +18,11 @@ app.use(cookieParser());
 
 // root routing and css
 app.use("/", express.static(path.join(__dirname, "public")));
-app.use("/", require("./routes/root"));
+app.use("/", require("./Routes/root"));
 
 // API routing
-app.use("/hotelDetails", require("./routes/hotelDetails"));
-app.use("/hotelData", require("./routes/hotelData"));
+app.use("/hotelDetails", require("./Routes/hotelDetails"));
+app.use("/hotelData", require("./Routes/hotelData"));
 
 // catch all route to transfer any unknown routes to 404 page
 app.all("*", (req, res) => {
