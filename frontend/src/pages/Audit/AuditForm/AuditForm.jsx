@@ -5,12 +5,13 @@ import RoomDataForm from './RoomDataForm';
 import RevenueDataForm from './RevenueDataForm';
 
 const AuditForm = () => {
-  const { sumbitData } = useHotelData();
+  const { sumbitData, setAduitData, auditData } = useHotelData();
 
   const formLinks = ['Revenue Totals', 'Room Totals', 'Room Info'];
 
   const [currentForm, setCurrentForm] = useState(formLinks[0]);
   const [canSubmit, setCanSubmit] = useState(false);
+  const [error, setError] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,13 +29,15 @@ const AuditForm = () => {
   };
 
   let navBar;
-  let formComponent = <RevenueDataForm />;
+  let formComponent = (
+    <RevenueDataForm auditData={auditData} setAuditData={setAduitData} error={error} setError={setError} />
+  );
 
   if (currentForm === formLinks[0]) {
     navBar = (
       <>
         <nav>
-          <ul className="flex items-center justify-center gap-1">
+          <ul className="flex items-center justify-center gap-2">
             <li
               className="p-2 text-white rounded-md bg-secondaryColor font-cta"
               onClick={() => setCurrentForm(formLinks[0])}
@@ -51,7 +54,7 @@ const AuditForm = () => {
         </nav>
       </>
     );
-    formComponent = <RevenueDataForm />;
+    formComponent = <RevenueDataForm auditData={auditData} setAuditData={setAduitData} />;
   } else if (currentForm === formLinks[1]) {
     navBar = (
       <>
@@ -73,7 +76,7 @@ const AuditForm = () => {
         </nav>
       </>
     );
-    formComponent = <RoomDataForm />;
+    formComponent = <RoomDataForm auditData={auditData} setAuditData={setAduitData} />;
   } else if (currentForm === formLinks[2]) {
     navBar = (
       <>
@@ -95,7 +98,7 @@ const AuditForm = () => {
         </nav>
       </>
     );
-    formComponent = <RoomInfoForm />;
+    formComponent = <RoomInfoForm auditData={auditData} setAuditData={setAduitData} />;
   }
 
   return (
@@ -118,7 +121,7 @@ const AuditForm = () => {
             </>
           )}
         </div>
-        <div className="flex flex-col w-11/12 gap-5 px-3 py-4 mx-auto my-4 text-white rounded-md bg-primaryColor">
+        <div className="flex flex-col w-full gap-5 px-3 py-4 mx-auto my-4 text-white rounded-md shadow-xl bg-primaryColor">
           {formComponent}
         </div>
       </form>
