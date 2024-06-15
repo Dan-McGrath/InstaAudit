@@ -89,6 +89,7 @@ export const HotelProvider = ({ children }) => {
       mtd,
       fetchHotelData,
       submitData,
+      setAuditData,
       setBusinessDate,
       getOverviewByDate,
       setYtd,
