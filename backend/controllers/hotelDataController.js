@@ -17,7 +17,7 @@ const getAllData = async (req, res) => {
   res.json(users);
 };
 
-// @desc Get specific user
+// @desc POST auditData
 // @route POST hotel data
 // @access Private
 const submitData = async (req, res) => {
