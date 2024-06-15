@@ -112,13 +112,15 @@ const AuditForm = () => {
             </>
           ) : (
             <>
-              <button type="button" onClick={saveAndContinue} className="px-2 py-1 my-3 rounded-md bg-accentColor">
+              <button type="button" onClick={saveAndContinue} className="px-2 py-1 my-4 rounded-md bg-accentColor">
                 Save and Continue
               </button>
             </>
           )}
         </div>
-        <div className="my-6">{formComponent}</div>
+        <div className="flex flex-col w-11/12 gap-5 px-3 py-4 mx-auto my-4 text-white rounded-md bg-primaryColor">
+          {formComponent}
+        </div>
       </form>
     </>
   );
